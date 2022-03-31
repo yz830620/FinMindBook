@@ -7,7 +7,7 @@ import typing
 import pandas as pd
 import requests
 from loguru import logger
-from pydantic import BaseModel
+from .sql_basemodel import TaiwanFuturesDaily
 
 
 def futures_header():
@@ -154,21 +154,6 @@ def crawler_futures(
         return pd.DataFrame()
     return df
 
-
-class TaiwanFuturesDaily(BaseModel):
-    date: str
-    FuturesID: str
-    ContractDate: str
-    Open: float
-    Max: float
-    Min: float
-    Close: float
-    Change: float
-    ChangePer: float
-    Volume: float
-    SettlementPrice: float
-    OpenInterest: int
-    TradingSession: str
 
 
 def check_schema(

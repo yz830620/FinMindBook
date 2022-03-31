@@ -6,8 +6,7 @@ import typing
 import pandas as pd
 import requests
 from loguru import logger
-from pydantic import BaseModel
-
+from .utils.sql_basemodel import TaiwanStockPrice
 
 def clear_data(
     df: pd.DataFrame,
@@ -161,19 +160,6 @@ def crawler_twse(
     )
     df["date"] = date
     return df
-
-
-class TaiwanStockPrice(BaseModel):
-    StockID: str
-    TradeVolume: int
-    Transaction: int
-    TradeValue: int
-    Open: float
-    Max: float
-    Min: float
-    Close: float
-    Change: float
-    date: str
 
 
 def check_schema(
